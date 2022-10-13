@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace ConnectMySQL.Model
 {
     public class DatabaseContext
     {
-        MySqlConnection connection = null;
+        //MySqlConnection connection = null;
+        SqlConnection connection = null;
         public DatabaseContext()
         {
-            connection = new MySqlConnection("server=localhost;database=test;uid=root;password=");
+            //connection = new MySqlConnection("server=localhost;database=test;uid=root;password=");
+            connection = new SqlConnection("server=DESKTOP-H5IA8G8\\SQLEXPRESS01;database=test;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
         public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
         {
